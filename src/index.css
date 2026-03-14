@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gh-blue: #58a6ff;
+  --color-gh-neon: #39d353;
+  
+  /* Semantic tokens mapped to CSS variables for theme switching */
+  --color-gh-bg: var(--background);
+  --color-gh-foreground: var(--foreground);
+  --color-gh-card: var(--card);
+  --color-gh-border: var(--border);
+  --color-gh-input: var(--input-bg);
+
+  --animate-shimmer: shimmer 2s infinite linear;
+
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+  }
+
+  @keyframes tooltip-in {
+    from { opacity: 0; transform: translate(-50%, 4px) scale(0.95); }
+    to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  }
+
+  --animate-tooltip: tooltip-in 0.15s ease-out forwards;
+}
+
+:root {
+  --background: #fdfdfd;
+  --foreground: #09090b;
+  --card: #ffffff;
+  --border: #e4e4e7;
+  --input-bg: #ffffff;
+  --grid-line: #e2e8f0;
+}
+
+.dark {
+  --background: #0d1117;
+  --foreground: #f0f6fc;
+  --card: #161b22;
+  --border: #30363d;
+  --input-bg: #0d1117;
+  --grid-line: #1e293b;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@layer utilities {
+  .skeleton-shimmer {
+    background: linear-gradient(to right, #21262d 8%, #30363d 18%, #21262d 33%);
+    background-size: 1000px 100%;
+    animation: var(--animate-shimmer);
+  }
+  
+  .card-hover-effect:hover {
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.3);
+    border-color: var(--color-gh-blue);
+  }
+
+  .grid-background-pattern {
+    background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 100%);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Custom Minimalistic Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+    transition: background 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gh-blue);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  /* Simplified theme toggle switch */
+  .theme-toggle-switch {
+    font-size: 11px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 1.2em;
+  }
+
+  .theme-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .theme-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border: 2px solid #000;
+    transition: .4s;
+    border-radius: 2px;
+  }
+
+  .theme-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 1.3em;
+    width: 1.2em;
+    border-radius: 2px;
+    left: 0.1em;
+    bottom: -0.25em;
+    background-color: #fff;
+    border: 2px solid #000;
+    transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .theme-toggle-switch input:checked + .theme-toggle-slider {
+    background-color: var(--color-gh-blue);
+  }
+
+  .theme-toggle-switch input:checked + .theme-toggle-slider:before {
+    transform: translateX(2.1em);
+  }
+
+  .dark .theme-toggle-slider {
+    background-color: #30363d;
+  }
+}
