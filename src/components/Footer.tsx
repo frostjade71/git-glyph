@@ -4,14 +4,23 @@ const Footer: React.FC = () => {
   return (
     <footer className="py-8 border-t border-[var(--border)] bg-[var(--background)]/50 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center gap-6">
-        <div className="flex items-center gap-2 mb-2">
-          <img src="/src/assets/favicon/favicon.svg" alt="GitGlyph Logo" className="w-5 h-5 opacity-60" />
-          <span className="font-bold text-gh-foreground/60 tracking-tight">GitGlyph</span>
+        <div className="flex flex-col items-center gap-1.5 mb-2">
+          <div className="flex items-center gap-2">
+            <img src="/favicon.svg" alt="GitGlyph Logo" className="w-5 h-5 opacity-60" />
+            <span className="font-bold text-gh-foreground/60 tracking-tight">GitGlyph</span>
+          </div>
+          <div className="text-center max-w-lg">
+            <p className="text-xs text-gh-foreground/40 leading-relaxed">
+              This web app is an inspired project by <a href="https://github.com/vn7n24fzkq" target="_blank" rel="noopener noreferrer" className="hover:text-gh-blue underline decoration-gh-foreground/20 underline-offset-2">casper</a>
+              <br />
+              A redesigned web app from his project <a href="https://github.com/vn7n24fzkq/github-profile-summary-cards" target="_blank" rel="noopener noreferrer" className="hover:text-gh-blue underline decoration-gh-foreground/20 underline-offset-2">github-profile-summary-cards</a>
+            </p>
+          </div>
         </div>
         
         <div className="text-center">
-          <p className="text-sm text-gh-foreground/60">
-            © {new Date().getFullYear()} GitGlyph Dev. Not affiliated with GitHub, Inc.
+          <p className="text-[10px] uppercase tracking-widest text-gh-foreground/30 font-medium">
+            © {new Date().getFullYear()} GitGlyph Dev • Not affiliated with GitHub, Inc.
           </p>
         </div>
 
