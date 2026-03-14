@@ -32,6 +32,10 @@ A **GitHub Summary Card Generator** designed for developers to showcase their pr
 - **Responsive Layout**: Designed to look stunning on every device, from mobile to ultra-wide monitors.
 - **Vercel Deployed**: Optimized for fast loading and global reach.
 
+<p align="center">
+  <img src="src/assets/screenshot1.png" alt="GitGlyph Screenshot" width="100%" style="border-radius: 10px;">
+</p>
+
 ## Technology Stack
 
 <p align="center">
